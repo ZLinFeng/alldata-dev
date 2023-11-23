@@ -1,6 +1,6 @@
 package cn.datax.gateway.handler;
 
-import cn.datax.common.core.R;
+//import cn.datax.common.core.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -31,6 +31,7 @@ public class HystrixFallbackHandler implements HandlerFunction<ServerResponse> {
         return ServerResponse
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(R.error("服务超时或者服务不可用,请稍后重试")));
+                //.body(BodyInserters.fromValue(R.error("服务超时或者服务不可用,请稍后重试")));
+                .body(BodyInserters.fromValue("服务超时或者服务不可用,请稍后重试"));
     }
 }

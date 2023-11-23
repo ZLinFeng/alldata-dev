@@ -1,6 +1,6 @@
 package cn.datax.gateway.filter;
 
-import cn.datax.common.core.DataConstant;
+//import cn.datax.common.core.DataConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -30,11 +30,11 @@ public class DataGatewayRequestFilter implements GlobalFilter {
         ServerHttpResponse response = exchange.getResponse();
         printLog(exchange);
 
-        byte[] token = Base64Utils.encode((DataConstant.Security.TOKENVALUE.getVal()).getBytes());
+        /*byte[] token = Base64Utils.encode((DataConstant.Security.TOKENVALUE.getVal()).getBytes());
         String[] headerValues = {new String(token)};
         ServerHttpRequest build = request.mutate().header(DataConstant.Security.TOKENHEADER.getVal(), headerValues).build();
-        ServerWebExchange newExchange = exchange.mutate().request(build).build();
-        return chain.filter(newExchange);
+        ServerWebExchange newExchange = exchange.mutate().request(build).build();*/
+        return chain.filter(exchange);
     }
 
     private void printLog(ServerWebExchange exchange) {

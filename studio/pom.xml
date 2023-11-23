@@ -24,12 +24,14 @@
         <module>generic</module>
         <module>logging</module>
         <module>modules</module>
+        <module>nacos</module>
     </modules>
 
     <name>Studio</name>
 
     <properties>
         <springboot.version>2.2.6.RELEASE</springboot.version>
+        <nacos.version>2.2.2</nacos.version>
         <jjwt.version>0.11.2</jjwt.version>
         <log4j2.version>2.17.0</log4j2.version>
         <logback.version>1.2.9</logback.version>
@@ -83,10 +85,10 @@
     <dependencies>
         <!--dataX Dependencies-->
         <!--eureka 客户端-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+        </dependency>-->
         <!--配置文件处理器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -116,10 +118,6 @@
             <scope>provided</scope>
         </dependency>
         <!--dataX Dependencies-->
-
-
-
-
 
 
         <!-- spring boot 缓存 -->
@@ -215,6 +213,26 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- nacos 依赖 -->
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
+                <!-- 指定纯净版SDK -->
+                <classifier>pure</classifier>
+            </dependency>
+            <!-- 使用纯净版时必须要引入同版本nacos-api和nacos-common，否则可能出现运行时找不到类的问题 -->
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-common</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-api</artifactId>
+                <version>${nacos.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
